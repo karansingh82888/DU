@@ -6,6 +6,7 @@ import { useTypedDispatch, useTypedSelector } from '../redux';
 import { languageUpdate, loginUpdate } from '../redux/Auth';
 import { Strings } from '../resources/Strings';
 import { clearDashboardData } from '../redux/Dashboard';
+import { ARABIC, ENGLISH } from '../resources/Constants';
 
 const Login = () => {
 
@@ -49,10 +50,10 @@ const Login = () => {
 
 			<View style={styles.list_view}>
 				<TouchableOpacity onPress={() => { dispatch(languageUpdate('En')) }} style={[styles.submit_btn, { borderColor: language == "En" ? "green" : "lightgrey" }]}>
-					<Text>English</Text>
+					<Text>{ENGLISH}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => { dispatch(languageUpdate('Ar')) }} style={[styles.submit_btn, { borderColor: language == "Ar" ? "green" : "lightgrey" }]}>
-					<Text>Arabic</Text>
+					<Text>{ARABIC}</Text>
 				</TouchableOpacity>
 			</View>
 
