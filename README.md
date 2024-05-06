@@ -2,7 +2,7 @@ Step for Project Setup-<br />
 <br />
 1)Firsly need to clone project from git.<br />
 2)Then hit "npm install" in project directory.<br />
-3)For Android hit "npx react-native run-android".<br />  
+3)For Android hit "npx react-native run-android".
 4)For IOS hit "npx react-native run-ios".<br />
 5)Done with App Setup.<br />
 
