@@ -83,9 +83,6 @@ const styles = StyleSheet.create({
 		paddingRight: 10,
 		fontSize: 16,
 	},
-	icon: {
-		marginLeft: 10,
-	},
 	heading: {
 		alignItems: 'center',
 		fontSize: 20,
