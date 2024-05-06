@@ -41,7 +41,7 @@ const Login = () => {
 				/>
 			</View>
 			<TouchableOpacity disabled={!isValid} onPress={() => {
-				dispatch(clearDashboardData())
+				dispatch(clearDashboardData([]))
 				dispatch(loginUpdate(true))
 			}} style={[styles.submit_btn, { borderColor: isValid ? "green" : "lightgrey" }]}>
 				<Text>{Strings.SUBMIT}</Text>
