@@ -20,10 +20,10 @@ const Dashboard = () => {
 	}, [pageNumber])
 
 	async function loadDashboardData() {
-		try{
-		await dispatch(fetchDashboardData(pageNumber,language))
+		try {
+			await dispatch(fetchDashboardData(pageNumber, language))
 		}
-		finally{
+		finally {
 			setLoading(false)
 		}
 	}
@@ -36,7 +36,7 @@ const Dashboard = () => {
 	);
 
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
+		<SafeAreaView style={styles.parent_view}>
 			<View style={styles.headerBox}>
 				<Text style={styles.heading}>{Strings.DASHBOARD_PAGE}</Text>
 				<Text style={styles.heading} onPress={() => dispatch(loginUpdate(false))}>{Strings.LOG_OUT}</Text>
@@ -48,7 +48,7 @@ const Dashboard = () => {
 					</View>
 				) : (
 					<FlatList
-						columnWrapperStyle={{ justifyContent: 'space-between' }}
+						columnWrapperStyle={styles.dashboard_list}
 						data={dashboardData}
 						renderItem={renderItem}
 						numColumns={2}
@@ -63,6 +63,12 @@ const Dashboard = () => {
 };
 
 const styles = StyleSheet.create({
+	parent_view: {
+		flex: 1
+	},
+	dashboard_list: {
+		justifyContent: 'space-between'
+	},
 	container: {
 		flex: 1,
 		backgroundColor: "white",
