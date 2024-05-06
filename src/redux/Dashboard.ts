@@ -9,12 +9,14 @@ const dashboardReducer = createSlice({
   reducers: {
     updateDashboardData: (state, action) => {
       state.dashboardData = [...state.dashboardData,...action.payload] as any;
-        
+    },
+    clearDashboardData: (state, action) => {
+      state.dashboardData = [] as any;
     }
   },
 });
 
-export const { updateDashboardData } =
+export const { updateDashboardData ,clearDashboardData} =
 dashboardReducer.actions;
 export default dashboardReducer.reducer;
 

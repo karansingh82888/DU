@@ -5,6 +5,7 @@ import { checkIfInputsAreValid } from '../utils';
 import { useTypedDispatch, useTypedSelector } from '../redux';
 import { languageUpdate, loginUpdate } from '../redux/Auth';
 import { Strings } from '../resources/Strings';
+import { clearDashboardData } from '../redux/Dashboard';
 
 const Login = () => {
 
@@ -40,6 +41,7 @@ const Login = () => {
 				/>
 			</View>
 			<TouchableOpacity disabled={!isValid} onPress={() => {
+				dispatch(clearDashboardData())
 				dispatch(loginUpdate(true))
 			}} style={[styles.submit_btn, { borderColor: isValid ? "green" : "lightgrey" }]}>
 				<Text>{Strings.SUBMIT}</Text>
