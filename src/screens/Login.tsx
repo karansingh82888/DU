@@ -10,13 +10,13 @@ const Login = () => {
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-    const [isValid,setValid]=useState(false)
+	const [isValid, setValid] = useState(false)
 	const language = useTypedSelector(state => state.authReducer.loginData.language);
-	const dispatch=useTypedDispatch()
+	const dispatch = useTypedDispatch()
 
-	useEffect(()=>{
-		setValid(checkIfInputsAreValid(email,password))
-	},[email,password])
+	useEffect(() => {
+		setValid(checkIfInputsAreValid(email, password))
+	}, [email, password])
 
 	return (
 		<SafeAreaView style={styles.mainContainer}>
@@ -39,19 +39,19 @@ const Login = () => {
 					placeholderTextColor="#aaa"
 				/>
 			</View>
-			<TouchableOpacity disabled={!isValid} onPress={()=>{
+			<TouchableOpacity disabled={!isValid} onPress={() => {
 				dispatch(loginUpdate(true))
-				}} style={[styles.submit_btn,{borderColor:isValid?"green":"lightgrey"}]}>
+			}} style={[styles.submit_btn, { borderColor: isValid ? "green" : "lightgrey" }]}>
 				<Text>{Strings.SUBMIT}</Text>
 			</TouchableOpacity>
 
-			<View style={{flexDirection:"row",justifyContent: 'space-around'}}>
-			<TouchableOpacity onPress={()=>{dispatch(languageUpdate('En'))}} style={[styles.submit_btn,{borderColor:language=="En"?"green":"lightgrey"}]}>
-				<Text>English</Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={()=>{dispatch(languageUpdate('Ar'))}} style={[styles.submit_btn,{borderColor:language=="Ar"?"green":"lightgrey"}]}>
-				<Text>Arabic</Text>
-			</TouchableOpacity>
+			<View style={styles.list_view}>
+				<TouchableOpacity onPress={() => { dispatch(languageUpdate('En')) }} style={[styles.submit_btn, { borderColor: language == "En" ? "green" : "lightgrey" }]}>
+					<Text>English</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => { dispatch(languageUpdate('Ar')) }} style={[styles.submit_btn, { borderColor: language == "Ar" ? "green" : "lightgrey" }]}>
+					<Text>Arabic</Text>
+				</TouchableOpacity>
 			</View>
 
 		</SafeAreaView>
@@ -96,6 +96,10 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 		marginTop: 40,
 		borderRadius: 8,
+	},
+	list_view: {
+		flexDirection: "row",
+		justifyContent: 'space-around'
 	}
 });
 export default Login;
