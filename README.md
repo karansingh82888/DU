@@ -7,4 +7,4 @@ Step for Project Setup-<br />
 5)Done with App Setup.<br />
 
 Remarks-<br />
-For IOS need to hit "pod install" in project directory before step 4.
+For IOS need to hit "pod install" inside IOS Folder of project directory before step 4.
