@@ -11,6 +11,6 @@ For IOS need to hit "pod install" inside IOS Folder of project directory before 
 
 
 As per the requirements create Login screen consists of two inputs for email, password where submit button will be enable when validation gets passed for both the fields.
-https://github.com/karansingh82888/DU/assets/121599503/be83b504-1a83-40e5-b34c-3d8fe3602fbd
+![ScreenShot](https://github.com/karansingh82888/DU/assets/121599503/be83b504-1a83-40e5-b34c-3d8fe3602fbd)
 
 
