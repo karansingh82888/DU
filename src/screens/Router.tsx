@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Login from './Login';
-import { useTypedDispatch, useTypedSelector } from '../redux';
+import { useTypedSelector } from '../redux';
 import Dashboard from './Dashboard';
 import { Strings } from '../resources/Strings';
 

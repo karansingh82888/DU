@@ -4,24 +4,29 @@ import { View, StyleSheet, Text, SafeAreaView, FlatList, ActivityIndicator, Imag
 import { useTypedDispatch, useTypedSelector } from '../redux';
 import { Strings } from '../resources/Strings';
 import { fetchDashboardData } from '../redux/Dashboard';
-import { movieItem } from '../types';
 import { loginUpdate } from '../redux/Auth';
 
 const Dashboard = () => {
 
-	const [loading, setLoading] = useState(false);
-	const [arr, setArr] = useState<movieItem[]>([])
+	const [loading, setLoading] = useState(true);
 	const [pageNumber, setPageNumber] = useState(1)
+	const language = useTypedSelector(state => state.authReducer.loginData.language);
+	const dashboardData = useTypedSelector(state => state.dashboardReducer.dashboardData);
+
 	const dispatch = useTypedDispatch()
 
 	useEffect(() => {
-		setLoading(true)
-		dispatch(fetchDashboardData(pageNumber))
-			.then(response => {
-				setArr([...arr, ...response])
-				setLoading(false)
-			})
+		loadDashboardData()
 	}, [pageNumber])
+
+	async function loadDashboardData() {
+		try{
+		await dispatch(fetchDashboardData(pageNumber,language))
+		}
+		finally{
+			setLoading(false)
+		}
+	}
 
 	const renderItem = ({ item }: { item: any }) => (
 		<View style={styles.flatListContainer}>
@@ -44,12 +49,12 @@ const Dashboard = () => {
 				) : (
 					<FlatList
 						columnWrapperStyle={{ justifyContent: 'space-between' }}
-						data={arr}
+						data={dashboardData}
 						renderItem={renderItem}
 						numColumns={2}
-						keyExtractor={(item, index) => index + ""}
+						keyExtractor={(item, index) => index.toString()}
 						onEndReachedThreshold={0.5}
-						onEndReached={() => { if (arr.length > 0) setPageNumber(pageNumber + 1) }}
+						onEndReached={() => { if (dashboardData.length > 0) setPageNumber(pageNumber + 1) }}
 					/>
 				)}
 			</View>

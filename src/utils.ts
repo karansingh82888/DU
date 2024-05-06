@@ -1,4 +1,3 @@
-import { Strings } from "./resources/Strings";
 
 export const checkIfInputsAreValid = (email:string, password:string) => {
     let regexForEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;

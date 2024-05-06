@@ -1,6 +1,6 @@
 import { createSlice, Dispatch } from '@reduxjs/toolkit';
 import { API_KEY } from '../resources/ApiKeys';
-import { Strings } from '../resources/Strings';
+import { BASE_URL } from '../resources/Endpoints';
 import { movieItem } from '../types';
 
 const dashboardReducer = createSlice({
@@ -8,7 +8,8 @@ const dashboardReducer = createSlice({
   initialState: { dashboardData: [] },
   reducers: {
     updateDashboardData: (state, action) => {
-      state.dashboardData = action.payload;
+      state.dashboardData = [...state.dashboardData,...action.payload] as any;
+        
     }
   },
 });
@@ -17,10 +18,10 @@ export const { updateDashboardData } =
 dashboardReducer.actions;
 export default dashboardReducer.reducer;
 
-export const fetchDashboardData = (page) => {
+export const fetchDashboardData = (page,lang) => {
   return (dispatch) => {
     return new Promise<movieItem[]>((resolve, reject) => {
-      fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, {
+      fetch(`${BASE_URL}?language=${lang=="En"?'en-US':'ar'}&page=${page}`, {
         headers: {
           Authorization: `Bearer ${API_KEY}`,
         },
@@ -33,7 +34,7 @@ export const fetchDashboardData = (page) => {
             imageUrl: `https://image.tmdb.org/t/p/w500${item.poster_path}`
           }
         })
-        dispatch(updateDashboardData(response))
+        dispatch(updateDashboardData(response.results))
         resolve(response.results as movieItem[])
         }).catch(e => {
           reject(e)

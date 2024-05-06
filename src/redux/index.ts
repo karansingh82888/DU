@@ -25,6 +25,7 @@ import {
     version: 1,
     storage: AsyncStorage,
     timeout: undefined,
+    whitelist: ['authReducer']
   };
   
   const reducerList = {
